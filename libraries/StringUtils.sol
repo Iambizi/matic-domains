@@ -14,9 +14,9 @@ library StringUtils {
         uint len;
         uint i = 0;
         uint bytelength = bytes(s).length;
-        for(len = 0; i < bytelength; len++) {
+        for (len = 0; i < bytelength; len++) {
             bytes1 b = bytes(s)[i];
-            if(b < 0x80) {
+            if (b < 0x80) {
                 i += 1;
             } else if (b < 0xE0) {
                 i += 2;
