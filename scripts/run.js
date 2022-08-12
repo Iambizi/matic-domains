@@ -13,11 +13,11 @@ const main = async () => {
   console.log("Contract deployed to:", domainContract.address);
 
   // We're passing in a second variable - value. This is the moneyyyyyyyyyy
-  let txn = await domainContract.register("metalKabuterimon",  {value: hre.ethers.utils.parseEther('0.1')});
+  let txn = await domainContract.register("OmniMon",  {value: hre.ethers.utils.parseEther('0.1')});
   await txn.wait();
 
-  const address = await domainContract.getAddress("metalKabuterimon");
-  console.log("Owner of domain metalKabuterimon:", address);
+  const address = await domainContract.getAddress("OmniMon");
+  console.log("Owner of domain OmniMon:", address);
 
   const balance = await hre.ethers.provider.getBalance(domainContract.address);
   console.log("Contract balance:", hre.ethers.utils.formatEther(balance));

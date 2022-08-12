@@ -14,7 +14,7 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 // We import another help function
 import {Base64} from "../libraries/Base64.sol";
 
-abstract contract Domains is ERC721URIStorage {
+ contract Domains is ERC721URIStorage {
 
 // Magic given to us by OpenZeppelin to help us keep track of tokenIds.
   using Counters for Counters.Counter;
@@ -33,7 +33,7 @@ abstract contract Domains is ERC721URIStorage {
     mapping(string => string) public records;
 
     // We make the contract "payable" by adding this to the constructor
-    constructor(string memory _tld) payable {
+    constructor(string memory _tld) payable ERC721("OmniMon Name Service", "ONS") {
         tld = _tld;
         console.log("%s name service deployed", _tld);
     }
@@ -72,7 +72,7 @@ function register(string calldata name) public payable {
       abi.encodePacked(
         '{"name": "',
         _name,
-        '", "description": "A domain on the Ninja name service", "image": "data:image/svg+xml;base64,',
+        '", "description": "A domain on the OmniMon name service", "image": "data:image/svg+xml;base64,',
         Base64.encode(bytes(finalSvg)),
         '","length":"',
         strLen,
