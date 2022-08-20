@@ -1,21 +1,22 @@
 const main = async () => {
     const domainContractFactory = await hre.ethers.getContractFactory('Domains');
-    const domainContract = await domainContractFactory.deploy("ninja");
+    const domainContract = await domainContractFactory.deploy("knight");
     await domainContract.deployed();
   
     console.log("Contract deployed to:", domainContract.address);
   
-    // CHANGE THIS DOMAIN TO SOMETHING ELSE! I don't want to see OpenSea full of bananas lol
-    let txn = await domainContract.register("banana",  {value: hre.ethers.utils.parseEther('0.1')});
+    // CHANGE THIS DOMAIN TO SOMETHING ELSE! I don't want to see OpenSea full of ninjas lol
+    let bal = await domainContract.price("omniMon");
+    let txn = await domainContract.register("omniMon",  {value: hre.ethers.utils.parseEther((bal / 10 ** 18).toString())});
     await txn.wait();
-    console.log("Minted domain banana.ninja");
+    console.log("Minted domain omniMon.Knight");
   
-    txn = await domainContract.setRecord("banana", "Am I a banana or a ninja??");
+    txn = await domainContract.setRecord("Kinght", "Am I a omniMon or am I omniMon of the 13 Knights??");
     await txn.wait();
-    console.log("Set record for banana.ninja");
+    console.log("Set record for omniMon.ninja");
   
-    const address = await domainContract.getAddress("banana");
-    console.log("Owner of domain banana:", address);
+    const address = await domainContract.getAddress("omniMon");
+    console.log("Owner of domain omniMon:", address);
   
     const balance = await hre.ethers.provider.getBalance(domainContract.address);
     console.log("Contract balance:", hre.ethers.utils.formatEther(balance));

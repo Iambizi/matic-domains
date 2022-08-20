@@ -93,6 +93,8 @@ function register(string calldata name) public payable {
     _tokenIds.increment();
   }
 
+  
+
 
     // This will give us the domain owners' address
     function getAddress(string calldata name) public view returns (address) {
