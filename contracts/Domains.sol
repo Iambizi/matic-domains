@@ -55,7 +55,7 @@ function register(string calldata name) public payable {
     require(domains[name] == address(0));
 
     uint256 _price = price(name);
-    require(msg.value >= _price, "Not enough Matic paid");
+    require(msg.value >= _price, "Not enough Matic paid ");
     
     // Combine the name passed into the function  with the TLD
     string memory _name = string(abi.encodePacked(name, ".", tld));
