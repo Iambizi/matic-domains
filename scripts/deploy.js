@@ -4,10 +4,14 @@ const main = async () => {
     await domainContract.deployed();
   
     console.log("Contract deployed to:", domainContract.address);
+    const startEstimate = await domainContract.estimateGas.register("omniMon");
   
     // CHANGE THIS DOMAIN TO SOMETHING ELSE! I don't want to see OpenSea full of ninjas lol
     let bal = await domainContract.price("omniMon");
-    let txn = await domainContract.register("omniMon",  {value: hre.ethers.utils.parseEther((bal / 10 ** 18).toString())});
+    let txn = await domainContract.register("omniMon",  {
+      value: hre.ethers.utils.parseEther((bal / 10 ** 18).toString()),
+      gasLimit: startEstimate
+    });
     await txn.wait();
     console.log("Minted domain omniMon.Knight");
   
