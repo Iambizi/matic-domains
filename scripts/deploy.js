@@ -4,7 +4,6 @@ const main = async () => {
     await domainContract.deployed();
   
     console.log("Contract deployed to:", domainContract.address);
-    const startEstimate = await domainContract.estimateGas.register("omniMon");
   
     // CHANGE THIS DOMAIN TO SOMETHING ELSE! I don't want to see OpenSea full of ninjas lol
     let bal = await domainContract.price("omniMon");
