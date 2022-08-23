@@ -9,8 +9,7 @@ const main = async () => {
     // CHANGE THIS DOMAIN TO SOMETHING ELSE! I don't want to see OpenSea full of ninjas lol
     let bal = await domainContract.price("omniMon");
     let txn = await domainContract.register("omniMon",  {
-      value: hre.ethers.utils.parseEther((bal / 10 ** 18).toString()),
-      gasLimit: startEstimate
+      value: hre.ethers.utils.parseEther("0.1")
     });
     await txn.wait();
     console.log("Minted domain omniMon.Knight");
