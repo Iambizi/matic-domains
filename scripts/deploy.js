@@ -13,7 +13,7 @@ const main = async () => {
     await txn.wait();
     console.log("Minted domain omniMon.Knight");
   
-    txn = await domainContract.setRecord("Kinght", "Am I a omniMon or am I omniMon of the 13 Knights??");
+    txn = await domainContract.setRecord("Kinght", "Am I omniMon or am I omniMon of the 13 Knights??");
     await txn.wait();
     console.log("Set record for omniMon.ninja");
   
